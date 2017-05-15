@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from blog.views import home, detail
-from arcade.views import arcades
+from arcade.views import arcades, api_machine_list, api_machine_detail
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name='index'),
     url(r'^yazi/(?P<pattern>.*)$', detail),
-    url(r'^arcadegame/$', arcades, name='arcades')
+    url(r'^arcadegame/$', arcades, name='arcades'),
+    url(r'^api/arcade/all/$', api_machine_list),
+    url(r'^api/arcade/detail/(?P<pk>.*)', api_machine_detail)
 ]
