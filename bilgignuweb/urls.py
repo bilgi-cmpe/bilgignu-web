@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from blog.views import home, detail
+from blog.views import home, detail, category
 from arcade.views import arcades, api_machine_list, api_machine_detail
 
 urlpatterns = [
@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^yazi/(?P<pattern>.*)$', detail),
     url(r'^arcadegame/$', arcades, name='arcades'),
     url(r'^api/arcade/all/$', api_machine_list),
-    url(r'^api/arcade/detail/(?P<pk>[0-9])', api_machine_detail)
+    url(r'^api/arcade/detail/(?P<pk>[0-9])', api_machine_detail),
+    url(r'^kategori/(?P<pattern>.*)', category)
 ]

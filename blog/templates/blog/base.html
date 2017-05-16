@@ -16,11 +16,14 @@
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
+          <a href="#" class="navbar-brand active">BilgiGNU</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Anasayfa</a></li>
+          <li><a href="/">Anasayfa</a></li>
           <li><a href="https://github.com/bilgi-cmpe" target="_blank">GitHub</a></li>
-          <li><a href="http://www.ozguryazilimgunleri.org.tr/2017/" target="_blank">Özgür Yazılım Günleri 2017</a></li>
+          {% for category in categories %}
+            <li><a href="/kategori/{{ category.pattern }}">{{ category.name }}</a></li>
+          {% endfor %}
         </ul>
       </div>
     </nav>
