@@ -16,14 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from blog.views import home, detail, category
-from arcade.views import arcades, api_machine_list, api_machine_detail
+from arcade.views import arcade, api_machine_list, api_machine_detail
 from rest_framework.authtoken import views as drf_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name='index'),
     url(r'^yazi/(?P<pattern>.*)$', detail),
-    url(r'^arcadegame/$', arcades, name='arcades'),
+    url(r'^cocuklaricinoyna$', arcade, name='arcade'),
     url(r'^api/arcade/all/$', api_machine_list),
     url(r'^api/arcade/detail/(?P<pk>[0-9])', api_machine_detail),
     url(r'^kategori/(?P<pattern>.*)', category),

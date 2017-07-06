@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+{% block 'content' %}
+  <div class="container">
+      <div class="row">
+        <div class="col-md-12 campaign-header">
+          <b>ÇOCUKLAR IÇIN OYNA</b>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-xs-12">
+          Türkiye’nin bir çok yerinde çocukların araştırma yapabilecekleri ya da programlama öğrenebilecekleri bilgisayarlara erişimleri yok. Günümüz koşullarında eğitimde temel ihtiyaç haline gelen bilgisayar ve internete erişimin her çocuk tarafından ulaşılabilir olması gerektiğini düşünüyoruz. Türkiye’nin her yerinde çocukların kolayca erişebileceği Özgür Yazılım Laboratuvarları kurmayı hedefliyoruz. <br><br>
+
+          Özgür Yazılım Laboratuvarlarını finanse etmek için gereken kaynağı ‘Charity Arcade’ler üzerinden karşılamaya karar verdik. Bu proje için ilk atari makinesini İstanbul Bilgi Üniversitesi Santral Kampüsü’ndeki E3 binasına yerleştirdik. <br><br>
+
+          Sen de oyna, genç arkadaşlarımız için kuracağımız laboratuvarlara destek ol! 
+
+        </div>
+        <div class="col-md-4 col-xs-12 arcades">
+        OYUN MAKINALARI
+        <hr>
+          <div class="panel-group">
+              {% for machine in machines %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ machine.name}}</div>
+                    <div class="panel-body">
+                    <div class="row">
+
+                      Destek Miktarı: {{ machine.money}}
+                    </div>
+                    </div>
+                </div>
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+    
+  </div>
+{% endblock %}

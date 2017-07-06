@@ -1,0 +1,12 @@
+.footer{
+	border-top: 1px solid black;
+}
+
+.campaign-header{
+	font-size: 30px;
+}
+
+.arcades{
+	border-left: 1px solid black;
+	min-height: 300px;
+}

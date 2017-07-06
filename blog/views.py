@@ -13,7 +13,6 @@ def detail(request, pattern):
     categories = Category.objects.all()
     return render(request, 'blog/detail.html', {"post": post, "categories": categories})
 
-
 def category(request, pattern):
     page = Category.objects.get(pattern=pattern)
     if page.redirect:

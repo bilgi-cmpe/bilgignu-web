@@ -30,5 +30,9 @@ def api_machine_detail(request, pk):
     return JsonResponse(serializer.data, safe=False)
 
 
-def arcades(request):
-    return render(request, 'arcade/arcade.html')
+def arcade(request):
+    try:
+        machines = Machine.objects.all()
+    except Machine.DoesNotExist:
+        return HttpResponse(status=404)
+    return render(request,'arcade/campaign.html', {'machines':machines})
