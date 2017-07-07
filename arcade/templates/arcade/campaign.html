@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 {% load i18n %}
 {% block 'content' %}
+{% load static %}
   <div class="container">
       <div class="row">
         <div class="col-md-12 campaign-header">
@@ -9,12 +10,18 @@
       </div>
       <div class="row">
         <div class="col-md-8 col-xs-12">
+          <div class="row">
           Türkiye’nin bir çok yerinde çocukların araştırma yapabilecekleri ya da programlama öğrenebilecekleri bilgisayarlara erişimleri yok. Günümüz koşullarında eğitimde temel ihtiyaç haline gelen bilgisayar ve internete erişimin her çocuk tarafından ulaşılabilir olması gerektiğini düşünüyoruz. Türkiye’nin her yerinde çocukların kolayca erişebileceği Özgür Yazılım Laboratuvarları kurmayı hedefliyoruz. <br><br>
 
           Özgür Yazılım Laboratuvarlarını finanse etmek için gereken kaynağı ‘Charity Arcade’ler üzerinden karşılamaya karar verdik. Bu proje için ilk atari makinesini İstanbul Bilgi Üniversitesi Santral Kampüsü’ndeki E3 binasına yerleştirdik. <br><br>
 
           Sen de oyna, genç arkadaşlarımız için kuracağımız laboratuvarlara destek ol! 
-
+          </div>
+          {% comment 'Ekip/Proje dökümantasyonu ve github linki ekle' %}
+          <div class="row">
+            <img src="{% static 'images/campaign_logo.png' %}" class="img-responsive">
+          </div>
+          {% endcomment %}
         </div>
         <div class="col-md-4 col-xs-12 arcades">
         OYUN MAKINALARI
@@ -25,8 +32,25 @@
                     <div class="panel-heading">{{ machine.name}}</div>
                     <div class="panel-body">
                     <div class="row">
-
-                      Destek Miktarı: {{ machine.money}}
+                      <div class="col-md-6">Konum:</div>
+                      <div class="col-md-6">{{ machine.location_name }}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">Aktiflik durumu:</div>
+                      <div class="col-md-6">{% if machine.status %} <span class="glyphicon glyphicon-ok-circle"></span> {% else %} <span class="glyphicon glyphicon-remove-circle"></span> {% endif %}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">Çalışma tarihi:</div>
+                      <div class="col-md-6">{{ machine.start_date }} - {% if machine.end_date is not null %} {{ machine.end_date }} {% endif %}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">Destek Miktarı:</div>
+                      <div class="col-md-6">{{ machine.money}}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6"></div>
+                      <div class="col-md-6"><a href="http://www.google.com/maps/place/{{machine.loc_pos_lat}},{{machine.loc_pos_lon}}/{{machine.loc_pos_lat}},{{machine.loc_pos_lon}},17z{{">Haritada Gör</a></div>
+                    </div>
                     </div>
                     </div>
                 </div>
