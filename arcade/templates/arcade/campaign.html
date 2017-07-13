@@ -10,7 +10,7 @@
       </div>
       <div class="row">
         <div class="col-md-8 col-xs-12">
-          <div class="row">
+          <div class="row campaign_text">
           Türkiye’nin bir çok yerinde çocukların araştırma yapabilecekleri ya da programlama öğrenebilecekleri bilgisayarlara erişimleri yok. Günümüz koşullarında eğitimde temel ihtiyaç haline gelen bilgisayar ve internete erişimin her çocuk tarafından ulaşılabilir olması gerektiğini düşünüyoruz. Türkiye’nin her yerinde çocukların kolayca erişebileceği Özgür Yazılım Laboratuvarları kurmayı hedefliyoruz. <br><br>
 
           Özgür Yazılım Laboratuvarlarını finanse etmek için gereken kaynağı ‘Charity Arcade’ler üzerinden karşılamaya karar verdik. Bu proje için ilk atari makinesini İstanbul Bilgi Üniversitesi Santral Kampüsü’ndeki E3 binasına yerleştirdik. <br><br>
@@ -22,6 +22,24 @@
             <img src="{% static 'images/campaign_logo.png' %}" class="img-responsive">
           </div>
           {% endcomment %}
+          <span class="btn btn-default" data-toggle="collapse" data-target="#team">EKIP</span>
+          <span class="btn btn-default" data-toggle="collapse" data-target="#photo">FOTOĞRAFLAR</span>
+          <span class="btn btn-default" data-toggle="collapse" data-target="#source">KAYNAK</span>
+          <div id="team" class="collapse">
+            Alpay Özkeskin - Donanim & Ürün Geliştirme<br>
+            Arda Alparslan - Logo Tasarım<br>
+            Deniz Gülnar - Yazılım Geliştirme<br>
+            Elif Tavkul - Grafik & Ürün Tasarımı<br>
+            Enis Tuysuz - API & Yazılım Geliştirme<br>
+            Orkun Aşa - Jedi<br>
+            <!--- Jedi: Donanım & Ürün Geliştirme & Web Tasarımı -->
+          </div>
+          <div id="photo" class="collapse">
+            <iframe src="https://drive.google.com/embeddedfolderview?id=0B7CMqhAtI6bbRE5NOWR4cEROYjg#grid" width="700" height="500" frameborder="0"></iframe>
+          </div>
+          <div id="source" class="collapse">
+           Yakın zamanda eklenecek...
+          </div>
         </div>
         <div class="col-md-4 col-xs-12 arcades">
         OYUN MAKINALARI
@@ -49,7 +67,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6"></div>
-                      <div class="col-md-6"><a href="http://www.google.com/maps/place/{{machine.loc_pos_lat}},{{machine.loc_pos_lon}}/{{machine.loc_pos_lat}},{{machine.loc_pos_lon}},17z{{">Haritada Gör</a></div>
+                      <div class="col-md-6"><a href="http://www.google.com/maps/place/{{machine.loc_pos_lat}},{{machine.loc_pos_lon}}/{{machine.loc_pos_lat}},{{machine.loc_pos_lon}},17z{{">Haritada Göster</a></div>
                     </div>
                     </div>
                     </div>
