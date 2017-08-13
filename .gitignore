@@ -89,3 +89,4 @@ ENV/
 .ropeproject
 
 /bilgignuweb/settings.py
+.idea

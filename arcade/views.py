@@ -1,33 +1,26 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
-from .models import Machine
-from .serializers import MachineSerializer
-from rest_framework.decorators import api_view
+from django.http import HttpResponse
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import permission_classes
+from rest_framework.generics import UpdateAPIView, ListAPIView
 
-@csrf_exempt
-def api_machine_list(request):
-    machines = Machine.objects.all()
-    serializer = MachineSerializer(machines, many=True)
-    return JsonResponse(serializer.data, safe=False)
+from .serializers import MachineSerializer
+from .models import Machine
 
 
-@api_view()
-@permission_classes((IsAuthenticated, ))
-@csrf_exempt
-def api_machine_detail(request, pk):
-    try:
-        machine = Machine.objects.get(pk=pk)
-    except Machine.DoesNotExist:
-        return HttpResponse(status=404)
-    machine.money += 1
-    machine.save()
-    serializer = MachineSerializer(machine)
-    return JsonResponse(serializer.data, safe=False)
+class MachineListView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = MachineSerializer
+
+    def get_queryset(self):
+        return Machine.objects.all()
+
+
+class MachineUpdateView(UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = MachineSerializer
+
+    def get_queryset(self):
+        return Machine.objects.filter(id=self.kwargs["pk"])
 
 
 def arcade(request):
