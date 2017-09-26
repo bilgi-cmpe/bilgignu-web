@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeView.as_view(), name='index'),
     url(r'^yazi/(?P<pattern>.*)$', DetailView.as_view()),
-    url(r'^cocuklaricinoyna$/', ArcadeView.as_view(), name='arcade'),
+    url(r'^cocuklaricinoyna/$', ArcadeView.as_view(), name='arcade'),
     url(r'^api/arcade/all/$', MachineListView.as_view()),
     url(r'^api/arcade/(?P<pk>[0-9]+)/$', MachineUpdateView.as_view()),
     url(r'^kategori/(?P<pattern>.*)/$', CategoryView.as_view()),
