@@ -21,10 +21,10 @@
         </div>
         <ul class="nav navbar-nav">
           <li><a href="/">Anasayfa</a></li>
-          <li><a href="{{'cocuklaricinoyna'}}">#ÇocuklarIçinOyna</a></li>
+          <li><a href="{{'cocuklaricinoyna'}}/">#ÇocuklarIçinOyna</a></li>
           <li><a href="https://github.com/bilgi-cmpe" target="_blank">GitHub</a></li>
           {% for category in categories %}
-            <li><a href="/kategori/{{ category.pattern }}">{{ category.name }}</a></li>
+            <li><a href="/kategori/{{ category.pattern }}/">{{ category.name }}</a></li>
           {% endfor %}
         </ul>
       </div>
