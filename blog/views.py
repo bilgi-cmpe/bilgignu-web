@@ -1,21 +1,27 @@
 from django.shortcuts import render
-from .models import Post, Category
 from django.http import HttpResponseRedirect
+from django.views.generic import View
 
-def home(request):
-    posts = Post.objects.all().order_by("-date")
-    categories = Category.objects.all()
-    return render(request, 'blog/home.html', {"posts": posts, "categories": categories})
+from .models import Post, Category
+
+class HomeView(View):
+    def get(self, request):
+        posts = Post.objects.all().order_by("-date")
+        categories = Category.objects.all()
+        return render(request, 'blog/home.html', {"posts": posts, "categories": categories})
 
 
-def detail(request, pattern):
-    post = Post.objects.get(pattern=pattern)
-    categories = Category.objects.all()
-    return render(request, 'blog/detail.html', {"post": post, "categories": categories})
+class DetailView(View):
+    def get(self, request):
+        post = Post.objects.get(pattern=pattern)
+        categories = Category.objects.all()
+        return render(request, 'blog/detail.html', {"post": post, "categories": categories})
 
-def category(request, pattern):
-    page = Category.objects.get(pattern=pattern)
-    if page.redirect:
-        return HttpResponseRedirect(page.url)
-    categories = Category.objects.all()
-    return render(request, 'blog/detail.html', {"categories": categories})
+
+class CategoryView(View):
+    def get(self, request):
+        page = Category.objects.get(pattern=pattern)
+        if page.redirect:
+            return HttpResponseRedirect(page.url)
+        categories = Category.objects.all()
+        return render(request, 'blog/detail.html', {"categories": categories})

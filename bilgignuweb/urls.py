@@ -15,17 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from blog.views import home, detail, category
-from arcade.views import arcade, MachineListView, MachineUpdateView
 from rest_framework.authtoken import views as drf_views
+
+from blog.views import HomeView, DetailView, CategoryView
+from arcade.views import ArcadeView, MachineListView, MachineUpdateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home, name='index'),
-    url(r'^yazi/(?P<pattern>.*)$', detail),
-    url(r'^cocuklaricinoyna$', arcade, name='arcade'),
+    url(r'^$', HomeView.as_view(), name='index'),
+    url(r'^yazi/(?P<pattern>.*)$', DetailView.as_view()),
+    url(r'^cocuklaricinoyna$/', ArcadeView.as_view(), name='arcade'),
     url(r'^api/arcade/all/$', MachineListView.as_view()),
     url(r'^api/arcade/(?P<pk>[0-9]+)/$', MachineUpdateView.as_view()),
-    url(r'^kategori/(?P<pattern>.*)', category),
+    url(r'^kategori/(?P<pattern>.*)/$', CategoryView.as_view()),
     url(r'^get_auth_token/$', drf_views.obtain_auth_token, name='get_auth_token')
 ]
